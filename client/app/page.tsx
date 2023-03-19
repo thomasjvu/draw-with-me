@@ -26,9 +26,19 @@ const page: FC<pageProps> = ({}) => {
 
         socket.emit('client-ready')
 
-        // socket.on('get-canvas-state', () => {
-        //     if(!canvasRef.current.toDataUrl)
-        // })
+        // turn canvas state into a string
+        socket.on('get-canvas-state', () => {
+            if(!canvasRef.current.toDataURL()) return 
+            socket.emit('canvas-state', canvasRef.current.toDataURL())
+        })
+
+        socket.on('canvas-state-from-server', (state: string) => {
+            const img = new Image()
+            img.src = state
+            img.onload = () => {
+                ctx?.drawImage(img, 0, 0)
+            }
+        })
 
         socket.on('draw-line', ({ previousPoint, currentPoint, color }: DrawLineProps) => {
             if(!ctx) return
@@ -36,6 +46,14 @@ const page: FC<pageProps> = ({}) => {
         })
 
         socket.on('clear', clear)
+
+        return () => {
+            socket.off('get-canvas-state')
+            socket.off('canvas-state-from-server')
+            socket.off('draw-line')
+            socket.off('clear')
+        }
+
     }, [])
 
     function createLine({previousPoint, currentPoint, ctx}: Draw) {

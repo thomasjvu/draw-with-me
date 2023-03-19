@@ -30,6 +30,11 @@ io.on('connection', (socket) => {
     socket.on('client-ready', () => {
         socket.broadcast.emit('get-canvas-state')
     })
+
+    socket.on('canvas-state', (state) => {
+        socket.broadcast.emit('canvas-state-from-server', state)
+    })
+
     socket.on('draw-line', ({previousPoint, currentPoint, color}: DrawLine) => {
         socket.broadcast.emit('draw-line', {previousPoint, currentPoint, color})
     })

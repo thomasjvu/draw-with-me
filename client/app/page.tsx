@@ -67,7 +67,7 @@ const Page: FC<pageProps> = ({}) => {
             <div className="flex flex-col gap-2 pr-10">
                 <h1 className="text-center text-3xl uppercase font-mono font-black bg-black text-white p-5 border-2 border-black rounded-md w-full">Draw with Me</h1>
                 <ChromePicker color={color} onChange={(e) => setColor(e.hex)}/>
-                <div class="text-center font-black bg-black text-white p-5 rounded-md">
+                <div className="text-center font-black bg-black text-white p-5 rounded-md">
                     <p>Draw on a shared canvas!</p>
                     <p>Your changes can be seen by anyone.</p>
                 </div>

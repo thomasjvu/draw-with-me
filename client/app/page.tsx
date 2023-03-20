@@ -5,7 +5,7 @@ import { useDraw } from "@/hooks/useDraw";
 import { ChromePicker } from 'react-color'
 import { io } from "socket.io-client"
 import { drawLine } from "@/utils/drawLine";
-const socket = io('https://draw-with-me-server-5ouf.onrender.com')
+const socket = io('https://draw-with-me.onrender.com')
 
 interface pageProps {}
 

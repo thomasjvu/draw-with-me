@@ -63,19 +63,23 @@ const Page: FC<pageProps> = ({}) => {
     }
 
     return (
-        <div className='w-screen h-screen bg-white flex justify-center items-center'>
-            <div className="flex flex-col gap-10 pr-10">
+        <div className='w-screen h-screen flex justify-center items-center'>
+            <div className="flex flex-col gap-2 pr-10">
+                <h1 className="text-center text-3xl uppercase font-mono font-black bg-black text-white p-5 border-2 border-black rounded-md w-full">Draw with Me</h1>
                 <ChromePicker color={color} onChange={(e) => setColor(e.hex)}/>
-                <button type="button" onClick={() => socket.emit('clear')} className="p-2 rounded-md border border-black font-mono uppercase">Clear canvas</button>
+                <div class="text-center font-black bg-black text-white p-5 rounded-md">
+                    <p>Draw on a shared canvas!</p>
+                    <p>Your changes can be seen by anyone.</p>
+                </div>
+                <button type="button" onClick={() => socket.emit('clear')} className="p-2 rounded-md border-2 border-black bg-blood font-mono uppercase w-full font-black">Clear canvas</button>
             </div>
-            <div>
-                <h1 className="text-center text-3xl uppercase my-5">Draw with Me</h1>
+            <div className="">
                 <canvas 
                     ref={canvasRef}
                     onMouseDown={onMouseDown}
                     width={750}
                     height={750}
-                    className="border-2 border-black rounded-md"
+                    className="border-2 border-black rounded-md shadow-lg shadow-black-700"
                 />        
             </div>
         </div>

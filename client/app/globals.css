@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  background: repeating-conic-gradient(#BF4D28 0 .00005%,#E1F5C4 0 .00017%) 0 0/5000px 4000px;
+}
+
+
+canvas {
+    background: white;
+}
+
+.chrome-picker {
+    font-family: monospace !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 0px 0px 0px !important;
+    border: 2px solid black;
+    width: 100% !important;
+}
+
+
+/* custom colors */
+.bg-beige {
+    background: #e1f5c4;
+}
+
+.bg-blood {
+    background: #bf4d28;
+}

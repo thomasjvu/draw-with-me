@@ -28,8 +28,8 @@ const Page: FC<pageProps> = ({}) => {
 
         // turn canvas state into a string
         socket.on('get-canvas-state', () => {
-            if(!canvasRef.current.toDataURL()) return 
-            socket.emit('canvas-state', canvasRef.current.toDataURL())
+            if(!canvasRef.current!.toDataURL()) return 
+            socket.emit('canvas-state', canvasRef.current!.toDataURL())
         })
 
         socket.on('canvas-state-from-server', (state: string) => {
